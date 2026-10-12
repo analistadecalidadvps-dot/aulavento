@@ -1,0 +1,1 @@
+window.AULA_PUBLISHED_COURSES = [];
