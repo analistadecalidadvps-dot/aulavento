@@ -165,12 +165,12 @@
     fab.id = 'meetFab';
     fab.type = 'button';
     fab.className = 'meet-fab';
-    fab.hidden = true;
+    fab.hidden = false;
     fab.textContent = 'Vista Meet';
     document.body.appendChild(fab);
 
     byId('meetExitBtn').onclick = function () { M.pinned = false; M.lastKey = ''; apply(); };
-    fab.onclick = function () { M.pinned = true; apply(); };
+    fab.onclick = function () { if(window.AulaProjection?.open){AulaProjection.open();return;} M.pinned = true; apply(); };
     byId('meetSoundBtn').onclick = function () {
       M.sound = !M.sound;
       sessionStorage.setItem('ventoMeetSound', M.sound ? '1' : '0');
@@ -375,7 +375,7 @@
     var stage = byId('meetStage');
     var fab = byId('meetFab');
     if (!stage) return;
-    if(window.AulaProjection&&AulaProjection.isOpen()){stage.hidden=true;if(fab)fab.hidden=true;stopClock();return;}
+    if(window.AulaProjection){stage.hidden=true;if(fab)fab.hidden=false;stopClock();return;}
     var p = M.payload;
     var mode = classify(p);
     M.mode = mode;
