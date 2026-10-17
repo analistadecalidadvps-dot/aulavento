@@ -52,3 +52,6 @@ Preguntas breves: 20 segundos; texto de más de 60 palabras: 30; más de 100: 45
 
 ### Corrección de interacciones en Meet
 El desplazamiento de la diapositiva del instructor se refleja proporcionalmente en la ventana Meet. Abrir, cerrar, ampliar y desplazar una imagen desde el visor del instructor actualiza el visor proyectado; las imágenes de Meet también se pueden abrir con clic. Se habilitaron los retos originales de Retroalimentación y las opciones de Mantenimiento, Calidad y temas nativos. Las respuestas grupales no se atribuyen a participantes individuales. Validación de DOM: scroll, respuesta original, apertura de imagen, escala y cierre sincronizados. Los HTML aislados como PILOT conservan su adaptador propio.
+
+### Follow Up · Septiembre 2026
+Se actualizaron las dos diapositivas de resultados con el cierre de septiembre de https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/ (consultado 17/10/2026). Base del Top 5: 143 agencias. Sondeo:109(76%); Plan de Éxito:108(76%); Script Maestro:101(71%); Garantía y Primer Servicio:81(57%); Cierre Transicional:69(48%). Los porcentajes enteros y el orden de agencias se conservan según el reporte fuente. El comparativo contiene únicamente agencias y calificaciones, sin unidades ni montos de venta. Los demás materiales y actividades se conservan.

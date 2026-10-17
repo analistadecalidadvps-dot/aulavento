@@ -5,28 +5,11 @@
 
 var FOLLOWUP_DATA = { evaluaciones:0, colaboradores:0, agencias:0, cumplimientoGeneral:0, mejoraVsAnterior:0 };
 var THRESHOLDS = { fortaleza:90, enDesarrollo:80 };
-var FU_TOP5 = [
-  { num:1, nombre:"SONDEO / VILLANO", detalle:"Identificar los 3 niveles de problema", pct:80, inc:115 },
-  { num:2, nombre:"SCRIPT MAESTRO", detalle:"Modelo alineado con beneficio de éxito", pct:71, inc:102 },
-  { num:3, nombre:"PLAN DE ÉXITO", detalle:"Moto ideal + ajuste a tu bolsillo + seguridad", pct:65, inc:93 },
-  { num:4, nombre:"GARANTÍA", detalle:"Comunicar 3 años / 33,000 km e indicaciones del primer servicio", pct:55, inc:79 },
-  { num:5, nombre:"VENTEC / OFRECER CASCO", detalle:"", pct:53, inc:77 }
-];
-var FU_DESTACADAS = [
-  { agencia:"16094 Plaza Huehuetoca", cal:100, motos:122, monto:"$3,483,170.74" },
-  { agencia:"16199 Mapastepec", cal:100, motos:32, monto:"$773,980.15" },
-  { agencia:"16040 Nezahualcoyotl Oriente", cal:99, motos:64, monto:"$1,753,481.16" },
-  { agencia:"16122 Boulevard De Los Aztecas", cal:99, motos:28, monto:"$726,282.54" },
-  { agencia:"16076 Rio De Los Remedios", cal:97, motos:60, monto:"$1,660,847.84" },
-  { agencia:"16100 Alfredo Del Mazo", cal:96, motos:80, monto:"$2,270,569.05" },
-  { agencia:"16286 Teloloapan", cal:96, motos:28, monto:"$745,234.50" },
-  { agencia:"16209 Progreso De Obregon", cal:96, motos:27, monto:"$717,485.95" },
-  { agencia:"16150 Valle De Santiago", cal:95, motos:63, monto:"$1,707,193.29" },
-  { agencia:"16073 San Mateo Atenco", cal:94, motos:50, monto:"$1,533,778.08" }
-];
-var FU_RIESGO = [{"agencia":"16145 Plaza Castillotla","cal":25,"motos":57,"monto":"$1,491,683.65"},{"agencia":"16186 Puebla Tecamachalco","cal":32,"motos":51,"monto":"$1,330,042.23"},{"agencia":"16249 Tlapacoyan","cal":32,"motos":23,"monto":"$704,290.51"},{"agencia":"16111 Xonacatlan","cal":34,"motos":58,"monto":"$1,719,518.96"},{"agencia":"16279 Playa Del Carmen","cal":35,"motos":70,"monto":"$1,877,799.63"},{"agencia":"16259 Altamira","cal":36,"motos":42,"monto":"$1,238,325.90"},{"agencia":"16191 Uruapan","cal":38,"motos":45,"monto":"$1,284,858.11"},{"agencia":"16069 San Juan de los Lagos","cal":38,"motos":39,"monto":"$1,117,795.94"},{"agencia":"16188 Paseo Poniente","cal":38,"motos":14,"monto":"$412,487.94"},{"agencia":"16109 Abasolo","cal":42,"motos":49,"monto":"$1,181,922.16"}];
-var FU_TOT_DESTACADAS = { monto:"$15,372,023.30", uds:554 };
-var FU_TOT_RIESGO = { monto:"$12,358,725.03", uds:448 };
+var FU_TOP5 = [{"num": 1, "nombre": "Sondeo / Villano (3 niveles de problema)", "detalle": "El sondeo no profundiza en los problemas externo, interno y filosófico del cliente.", "pct": 76, "inc": 109}, {"num": 2, "nombre": "Plan de éxito (Moto ideal, ajuste a tu bolsillo y seguridad)", "detalle": "No se presentan de forma proactiva y completa los tres componentes: moto ideal, ajuste al bolsillo y seguridad.", "pct": 76, "inc": 108}, {"num": 3, "nombre": "Script Maestro", "detalle": "La recomendación del producto no se vincula claramente con el problema detectado y el beneficio esperado.", "pct": 71, "inc": 101}, {"num": 4, "nombre": "Garantía y Primer Servicio", "detalle": "Se omite o se comunica de forma incompleta la garantía de 3 años / 33 mil km y el primer servicio.", "pct": 57, "inc": 81}, {"num": 5, "nombre": "Cierre Transicional (Cotización o preaprobación formal)", "detalle": "No se entrega una cotización o preaprobación formal, física o digital, para dar continuidad a la oportunidad de venta.", "pct": 48, "inc": 69}];
+var FU_DESTACADAS = [{"agencia": "16036 Orizaba Ver", "cal": 100}, {"agencia": "16178 Comitan Chp", "cal": 100}, {"agencia": "16260 Ebano Slp", "cal": 100}, {"agencia": "16267 Lazaro Cardenas Mic", "cal": 100}, {"agencia": "16026 Tecamac Mex", "cal": 97}, {"agencia": "16253 Puruandiro Mic", "cal": 97}, {"agencia": "16192 Motozintla Chp", "cal": 96}, {"agencia": "16245 Acatlan De Osorio Pue", "cal": 96}, {"agencia": "16125 Penjamo Gto", "cal": 95}, {"agencia": "16141 Tepexpan Mex", "cal": 93}];
+var FU_RIESGO = [{"agencia": "16148 Silao Gto", "cal": 40}, {"agencia": "16298 Agua Dulce Ver", "cal": 40}, {"agencia": "16306 Kanasin Yuc", "cal": 40}, {"agencia": "16043 Coatzacoalcos Ver", "cal": 38}, {"agencia": "16301 Cardel Ver", "cal": 38}, {"agencia": "16104 Acapulco Cuauhtemoc Gro", "cal": 36}, {"agencia": "16041 San Andres Tuxtla Ver", "cal": 34}, {"agencia": "16263 Aeropuerto Tampico Tam", "cal": 34}, {"agencia": "16232 Chilpancingo Sur Gro", "cal": 33}, {"agencia": "16095 Jojutla Mor", "cal": 32}];
+var FU_TOT_DESTACADAS = {};
+var FU_TOT_RIESGO = {};
 var FOLLOWUP_RESULTS = [
   { nombre:"Plan de Éxito", porcentaje:0, evaluaciones:0 },
   { nombre:"Sondeo / Villano", porcentaje:0, evaluaciones:0 },
@@ -468,14 +451,15 @@ function slidePortada(){
 
 function slideFuIntro(){
   var h = '<div class="slide" id="s_fuintro"><div class="slide-inner">';
-  h += '<div class="fu-kicker">RETROALIMENTACIÓN</div><h2 style="font-size:clamp(1.6rem,3.6vw,2.6rem);letter-spacing:.5px">FOLLOW UP MYSTERY SHOPPER</h2><div class="fu-agosto">'+(window.FOLLOWUP_PERIOD||'AGOSTO 2026')+'</div><p class="slide-sub" style="margin-top:18px">Resultados que explican qué debemos reforzar en piso de venta.</p>';
+  h += '<div class="fu-kicker">RETROALIMENTACIÓN</div><h2 style="font-size:clamp(1.6rem,3.6vw,2.6rem);letter-spacing:.5px">FOLLOW UP MYSTERY SHOPPER</h2><div class="fu-agosto">'+(window.FOLLOWUP_PERIOD||'SEPTIEMBRE 2026')+'</div><p class="slide-sub" style="margin-top:18px">Resultados que explican qué debemos reforzar en piso de venta.</p>';
   h += '<div class="fu-sec-t">Top 5 &mdash; Desviaciones cr&iacute;ticas en atenci&oacute;n al cliente</div>';
   h += '<div class="fu-rank fu-intro-rank">';
   FU_TOP5.forEach(function(r){
-    h += '<div class="fr-row"><div class="fr-num">#'+r.num+'</div><div class="fr-bd"><div class="fr-nm">'+r.nombre+'</div>'+(r.detalle?'<div class="fr-dt">'+r.detalle+'</div>':'')+'</div><div class="fr-inc">'+r.inc+' de 144 no cumplen</div><div class="fr-pct">'+r.pct+'%</div><div class="fr-bar"><div class="fr-fill" style="width:'+r.pct+'%"></div></div></div>';
+    h += '<div class="fr-row"><div class="fr-num">#'+r.num+'</div><div class="fr-bd"><div class="fr-nm">'+r.nombre+'</div>'+(r.detalle?'<div class="fr-dt">'+r.detalle+'</div>':'')+'</div><div class="fr-inc">'+r.inc+' de 143 no cumplen</div><div class="fr-pct">'+r.pct+'%</div><div class="fr-bar"><div class="fr-fill" style="width:'+r.pct+'%"></div></div></div>';
   });
   h += '</div>';
-  h += '<div class="fu-puente"><div class="fp-t">ESTOS RESULTADOS DEFINEN LOS TEMAS QUE REFORZAREMOS HOY.</div><div class="fp-chips">SONDEO &rarr; SCRIPT MAESTRO &rarr; PLAN DE ÉXITO &rarr; GARANTÍA &rarr; VENTEC</div></div>';
+  h += '<div class="fu-puente"><div class="fp-t">ESTOS RESULTADOS DEFINEN LOS TEMAS QUE REFORZAREMOS HOY.</div><div class="fp-chips">SONDEO &rarr; PLAN DE ÉXITO &rarr; SCRIPT MAESTRO &rarr; GARANTÍA &rarr; CIERRE TRANSICIONAL</div></div>';
+  h += '<p style="font-size:12px;margin-top:14px">Base: 143 agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre de septiembre de 2026</a></p>';
   h += '</div></div>';
   return h;
 }
@@ -485,18 +469,19 @@ function slideFuComp(){
     var h='<div class="fc-col'+(classR?' risk':'')+'"><div class="fc-hd"><div class="fc-t">'+ttl+'</div><div class="fc-badge'+(classR?' risk':'')+'">'+badge+'</div></div>';
     h+='<table class="fc-tbl"><thead><tr><th></th><th>Agencia</th><th class="c">Cal</th></tr></thead><tbody>';
     rows.forEach(function(r,i){
-      var agn=numbered?r.agn+' '+(i<9?"0"+(i+1):(i+1)):r.agn;
+      var agn=r.agn;
       h+='<tr><td class="fc-idx">'+(i+1)+'</td><td class="fc-agn">'+agn+'</td><td class="c"><span class="fc-cal'+(classR?' risk':'')+'">'+r.cal+'</span></td></tr>';
     });
     h+='</tbody></table></div>';
     return h;
   }
-  var h = '<div class="slide" id="s_fucomp"><div class="slide-inner"><div class="slide-label">Resultados</div><h2>Comparativo de Desempeño</h2><p class="slide-sub">Top 10 Agencias Destacadas vs. Top 10 Mayor Riesgo.</p>';
+  var h = '<div class="slide" id="s_fucomp"><div class="slide-inner"><div class="slide-label">Resultados</div><h2>Comparativo de Desempeño</h2><p class="slide-sub">Septiembre 2026 · Top 10 Agencias Destacadas vs. Top 10 Mayor Riesgo.</p>';
   h += '<div class="fu-compare">';
   h += col(false,"Top 10 Destacadas","\u2265 85 Puntos",false,FU_DESTACADAS.map(function(r){return{agn:r.agencia,cal:r.cal,motos:r.motos,monto:r.monto}}),FU_TOT_DESTACADAS);
   h += col(true,"Top 10 Mayor Riesgo","Alerta",true,FU_RIESGO.map(function(r){return{agn:r.agencia||'AGENCIA',cal:r.cal,motos:r.motos,monto:r.monto}}),FU_TOT_RIESGO);
   h += '</div>';
   h += '<div class="fc-note">UN ALTO VOLUMEN DE VENTA NO GARANTIZA UNA EJECUCIÓN CORRECTA DEL ESTÁNDAR.</div>';
+  h += '<p style="font-size:12px;margin-top:14px">Base: 143 agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre de septiembre de 2026</a></p>';
   h += '</div></div>';
   return h;
 }
@@ -980,7 +965,7 @@ function setupEvents(){
     if(!q){r.innerHTML="";return}
     var items=[
       {s:"Portada",i:0,t:"Retroalimentación FOLLOW UP OBSERVAMOS REFORZAMOS EJECUTAMOS"},
-      {s:"Follow Up Mystery Shopper",i:1,t:"resultados agosto 2026 desviaciones sondeo script maestro plan de exito garantia ventec"},
+      {s:"Follow Up Mystery Shopper",i:1,t:"resultados septiembre 2026 desviaciones sondeo plan de exito script maestro garantia cierre transicional"},
       {s:"Comparativo de Desempeño",i:2,t:"comparativo top 10 destacadas mayor riesgo agencias calificacion ventas"},
       {s:"¿Qué nos dicen estos resultados?",i:3,t:"hallazgos desviaciones venta estandar habito"},
       {s:"01 Plan de Éxito",i:4,t:"tres pilares encontrar modelo ajustar presupuesto salir protegido"},
