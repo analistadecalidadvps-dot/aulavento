@@ -455,11 +455,11 @@ function slideFuIntro(){
   h += '<div class="fu-sec-t">Top 5 &mdash; Desviaciones cr&iacute;ticas en atenci&oacute;n al cliente</div>';
   h += '<div class="fu-rank fu-intro-rank">';
   FU_TOP5.forEach(function(r){
-    h += '<div class="fr-row"><div class="fr-num">#'+r.num+'</div><div class="fr-bd"><div class="fr-nm">'+r.nombre+'</div>'+(r.detalle?'<div class="fr-dt">'+r.detalle+'</div>':'')+'</div><div class="fr-inc">'+r.inc+' de 143 no cumplen</div><div class="fr-pct">'+r.pct+'%</div><div class="fr-bar"><div class="fr-fill" style="width:'+r.pct+'%"></div></div></div>';
+    h += '<div class="fr-row"><div class="fr-num">#'+r.num+'</div><div class="fr-bd"><div class="fr-nm">'+r.nombre+'</div>'+(r.detalle?'<div class="fr-dt">'+r.detalle+'</div>':'')+'</div><div class="fr-inc">'+r.inc+' de '+(window.FOLLOWUP_BASE||143)+' no cumplen</div><div class="fr-pct">'+r.pct+'%</div><div class="fr-bar"><div class="fr-fill" style="width:'+r.pct+'%"></div></div></div>';
   });
   h += '</div>';
   h += '<div class="fu-puente"><div class="fp-t">ESTOS RESULTADOS DEFINEN LOS TEMAS QUE REFORZAREMOS HOY.</div><div class="fp-chips">SONDEO &rarr; PLAN DE ÉXITO &rarr; SCRIPT MAESTRO &rarr; GARANTÍA &rarr; CIERRE TRANSICIONAL</div></div>';
-  h += '<p style="font-size:12px;margin-top:14px">Base: 143 agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre de septiembre de 2026</a></p>';
+  h += '<p style="font-size:12px;margin-top:14px">Base: '+(window.FOLLOWUP_BASE||143)+' agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre '+(window.FOLLOWUP_PERIOD?'de '+window.FOLLOWUP_PERIOD.toLowerCase():'de septiembre de 2026')+'</a></p>';
   h += '</div></div>';
   return h;
 }
@@ -475,13 +475,13 @@ function slideFuComp(){
     h+='</tbody></table></div>';
     return h;
   }
-  var h = '<div class="slide" id="s_fucomp"><div class="slide-inner"><div class="slide-label">Resultados</div><h2>Comparativo de Desempeño</h2><p class="slide-sub">Septiembre 2026 · Top 10 Agencias Destacadas vs. Top 10 Mayor Riesgo.</p>';
+  var h = '<div class="slide" id="s_fucomp"><div class="slide-inner"><div class="slide-label">Resultados</div><h2>Comparativo de Desempeño</h2><p class="slide-sub">'+(window.FOLLOWUP_PERIOD||'Septiembre 2026')+' · Top 10 Agencias Destacadas vs. Top 10 Mayor Riesgo.</p>';
   h += '<div class="fu-compare">';
   h += col(false,"Top 10 Destacadas","\u2265 85 Puntos",false,FU_DESTACADAS.map(function(r){return{agn:r.agencia,cal:r.cal,motos:r.motos,monto:r.monto}}),FU_TOT_DESTACADAS);
   h += col(true,"Top 10 Mayor Riesgo","Alerta",true,FU_RIESGO.map(function(r){return{agn:r.agencia||'AGENCIA',cal:r.cal,motos:r.motos,monto:r.monto}}),FU_TOT_RIESGO);
   h += '</div>';
   h += '<div class="fc-note">UN ALTO VOLUMEN DE VENTA NO GARANTIZA UNA EJECUCIÓN CORRECTA DEL ESTÁNDAR.</div>';
-  h += '<p style="font-size:12px;margin-top:14px">Base: 143 agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre de septiembre de 2026</a></p>';
+  h += '<p style="font-size:12px;margin-top:14px">Base: '+(window.FOLLOWUP_BASE||143)+' agencias evaluadas. <a href="https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/" target="_blank" rel="noopener">Fuente: cierre '+(window.FOLLOWUP_PERIOD?'de '+window.FOLLOWUP_PERIOD.toLowerCase():'de septiembre de 2026')+'</a></p>';
   h += '</div></div>';
   return h;
 }

@@ -55,3 +55,6 @@ El desplazamiento de la diapositiva del instructor se refleja proporcionalmente 
 
 ### Follow Up · Septiembre 2026
 Se actualizaron las dos diapositivas de resultados con el cierre de septiembre de https://calidadagenciasvento-create.github.io/mystery-shopper-juniovento/ (consultado 17/10/2026). Base del Top 5: 143 agencias. Sondeo:109(76%); Plan de Éxito:108(76%); Script Maestro:101(71%); Garantía y Primer Servicio:81(57%); Cierre Transicional:69(48%). Los porcentajes enteros y el orden de agencias se conservan según el reporte fuente. El comparativo contiene únicamente agencias y calificaciones, sin unidades ni montos de venta. Los demás materiales y actividades se conservan.
+
+### Materiales de consulta y conexión mensual
+Se añade el Excel de cotización proporcionado por Ale el 17/10/2026, sin modificar sus bytes, en materiales/formato-cotizacion-oficial.xlsx. En consulta: Materiales descargables → Descargar formato oficial de cotización (Excel). La conexión mensual lee únicamente el JSON aprobado documentado en ACTUALIZACION_MENSUAL.md. La fuente actual sin ese bloque conserva septiembre de 2026. No se sustituyen resultados durante una sesión o con Meet abierto. No se modifican los temas, actividades, cronómetros, respuestas ni funciones de Meet.
